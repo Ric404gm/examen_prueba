@@ -1,0 +1,98 @@
+{
+	"info": {
+		"_postman_id": "d5e1698b-eace-4a8e-aae9-efbaa1520212",
+		"name": "Examen Prueba",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27688875",
+		"_collection_link": "https://apolo-team.postman.co/workspace/My-Workspace~4f77a1ff-545b-496d-8898-641850d83be7/collection/27688875-d5e1698b-eace-4a8e-aae9-efbaa1520212?action=share&creator=27688875&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Crear Estudiante",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"nombre\":\"Ricardo Camacho \",\r\n    \"edad\":\"28\",\r\n    \"ciudad\":\"Ciudad de Mexico\",\r\n    \"zonaHoraria\":\"CDMX\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/estudiantes/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"estudiantes",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Examen",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"descripcion\": \"Examen Informatica\",\r\n    \"preguntas\": [\r\n        {\r\n        \"nombrePregunta\" : \" Define concepto de internet de las cosas \",\r\n        \"respuestas\" : [\r\n            {\r\n                \"descripcion\" :  \"virus\",\r\n                \"isCorrectResponse\":true\r\n            },\r\n            {\r\n                \"descripcion\" :  \"software \",\r\n                \"isCorrectResponse\":false\r\n            },\r\n            {\r\n                \"descripcion\" :  \" domotica\",\r\n                \"isCorrectResponse\":false\r\n            },\r\n            {\r\n                \"descripcion\" :  \" Escuela\",\r\n                \"isCorrectResponse\":false\r\n            }\r\n        ]\r\n        }\r\n    ]\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/examen/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"examen",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Evaluar Estudiante",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"idEstudiante\": 1,\r\n    \"idExamen\": 1,\r\n    \"respuestasEstudianteDtos\": [\r\n        {\r\n            \"idPregunta\":1,\r\n            \"idRespuestaSeleccionada\":1\r\n        }\r\n    ]\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/gestion-examen/evaluate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gestion-examen",
+						"evaluate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
