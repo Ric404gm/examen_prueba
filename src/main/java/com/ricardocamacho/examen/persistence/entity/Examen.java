@@ -43,7 +43,7 @@ public class Examen {
                fetch = FetchType.LAZY,
                cascade = CascadeType.ALL) */
     //@OneToMany(mappedBy = "examen", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     @JoinColumn(name = "examen_pregunta")
     private java.util.List<ExamenPregunta> preguntas;
     

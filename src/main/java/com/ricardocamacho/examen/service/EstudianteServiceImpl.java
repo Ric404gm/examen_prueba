@@ -25,13 +25,24 @@ public class EstudianteServiceImpl implements EstudianteService {
     @Autowired
     private EstudianteRespository estudianteRespository;
 
+    @Autowired
+    public EstudianteServiceImpl (EstudianteRespository estudianteRespository ){
+        this.estudianteRespository = estudianteRespository;
+    }
+
     @Override
     public GenericResponseDto crearEstudiante(EstudianteDto estudianteDto) {
         try
         {  
-            return   new GenericResponseDto<String>().
+           /*  return   new GenericResponseDto<String>().
                 build(String.valueOf(estudianteRespository.
-                    save( mapper.map(estudianteDto, Estudiantes.class)).getId()))  ;
+                    save( mapper.map(estudianteDto, Estudiantes.class)).getId()))  ;*/
+            Estudiantes estudiantes = mapper.map(estudianteDto, Estudiantes.class);
+
+            Estudiantes estudiantesResult =  estudianteRespository.save(estudiantes);
+
+            return   new GenericResponseDto<String>().build(String.valueOf(estudiantesResult.getId()));
+
         }catch (Exception e ){
             LOGGER.error( " * Ha ocurrido un error *  " , e);
             return   new GenericResponseDto<String>().build("ERROR")  ;

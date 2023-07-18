@@ -25,7 +25,7 @@ public class ExamenPregunta {
     private Long id;
     private String nombrePregunta;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     @JoinColumn(name = "respuesta")
     private List<Respuesta> respuestas;
 

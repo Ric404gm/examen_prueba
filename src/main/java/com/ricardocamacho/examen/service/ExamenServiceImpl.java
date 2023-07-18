@@ -44,7 +44,6 @@ public class ExamenServiceImpl implements ExamenService  {
         try
         {  
 
-            Examen examenEntity  =  new Examen();
             List<ExamenPregunta> examenPreguntas = new ArrayList<>(); 
 
             examenDto.getPreguntas().stream().forEach( itemPreguntaDto  ->  { 
@@ -69,15 +68,14 @@ public class ExamenServiceImpl implements ExamenService  {
                 
             });
 
+            
+            Examen examenEntity  =  new Examen();
             examenEntity.setPreguntas(examenPreguntas);
             examenEntity.setDescripcion(examenDto.getDescripcion());
            
-            //Examen ent =  examenRepository.save(examenEntity);
-
-            // ent = examenRepository.findById(1L).get();
-
+            Examen examenEntityResult =  examenRepository.save(examenEntity) ;
             return new GenericResponseDto<String>()
-                        .build( String.valueOf(examenRepository.save(examenEntity).getId()).concat(", ").concat( examenEntity.toString()  )   );
+                        .build(String.valueOf( examenEntityResult.getId()));
         }catch (Exception e ){
             LOGGER.error( " * Ha ocurrido un error *  " , e);
             return   new GenericResponseDto<String>().build("ERROR")  ;

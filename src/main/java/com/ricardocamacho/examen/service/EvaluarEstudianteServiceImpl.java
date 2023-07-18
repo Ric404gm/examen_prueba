@@ -39,6 +39,11 @@ public class EvaluarEstudianteServiceImpl implements EvaluarEstudianteService{
     @Autowired
     private RespuestaRespository respuestaRespository;
 
+    public EvaluarEstudianteServiceImpl (EstudianteRespository estudianteRespository ){
+        this.estudianteRespository = estudianteRespository;
+    }
+    
+
     @Override
     public GenericResponseDto processEvaluation(EvaluarEstudianteDto estudianteDto) {
          try
